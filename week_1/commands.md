@@ -1,4 +1,6 @@
-# Docker command to start up postgres
+# Commands used in week 1:
+
+## Docker command to start up postgres
 
 docker run -it \
   -e POSTGRES_USER="root" \
@@ -8,11 +10,11 @@ docker run -it \
   -p 5432:5432 \
   postgres:13
 
-# pgcli to communicate with database running on docker
+## pgcli to communicate with database running on docker
 
 pgcli -h localhost -p 5432 -U root -d ny_taxi
 
-# Docker command to startup pgadmin4
+## Docker command to startup pgadmin4
 
 docker run -it \ 
     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
@@ -20,7 +22,7 @@ docker run -it \
     -p 8080:80 \
     dpage/pgadmin4
 
-# Create network and make docker contains run inside of it
+## Create network and make docker contains run inside of it
 
 docker network create pg-network
 
@@ -56,6 +58,7 @@ python ingest_data.py \
   --table=yellow_taxi_trips \
   --url=${URL}
 
+### As Docker image instead
 docker build -t taxi_ingest:v001 .
 
 docker run -it \
