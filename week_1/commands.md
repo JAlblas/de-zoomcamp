@@ -71,3 +71,10 @@ docker run -it \
     --db=ny_taxi \
     --table=yellow_taxi_trips \
     --url=${URL}
+
+### Use docker compose
+
+docker compose up
+OR: docker compose up -d (detached, so we get console back)
+
+docker compose down
