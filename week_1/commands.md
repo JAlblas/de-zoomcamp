@@ -61,20 +61,40 @@ python ingest_data.py \
 ### As Docker image instead
 docker build -t taxi_ingest:v001 .
 
+trip_URL="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+
 docker run -it \
-  --network=pg-network \
+  --network=week_1_default \
   taxi_ingest:v001 \
     --user=root \
     --password=root \
-    --host=pg-database \
+    --host=pgdatabase \
     --port=5432 \
     --db=ny_taxi \
     --table=yellow_taxi_trips \
-    --url=${URL}
+    --url=${trip_URL}
+
+zones_URL="https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv"
+
+docker build -f Dockerfile_zones -t taxi_zones_ingest .
+
+docker run -it \
+  --network=week_1_default \
+  taxi_zones_ingest \
+    --user=root \
+    --password=root \
+    --host=pgdatabase \
+    --port=5432 \
+    --db=ny_taxi \
+    --table=taxi_zones \
+    --url=${zones_URL}
 
 ### Use docker compose
+Fill out docker-compose.yml
 
 docker compose up
 OR: docker compose up -d (detached, so we get console back)
 
 docker compose down
+
+Remember, Python pipeline run through docker needs to use same network!
