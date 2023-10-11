@@ -1,9 +1,9 @@
 locals {
-  data_lake_bucket = "dtc_data_lake"
+  data_lake_bucket = "taxi_data_lake"
 }
 
 variable "project" {
-  description = "Your GCP Project ID"
+  description = "de-taxi-401414"
 }
 
 variable "region" {
