@@ -74,9 +74,9 @@ docker run -it \
     --table=yellow_taxi_trips \
     --url=${trip_URL}
 
-zones_URL="https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv"
-
 docker build -f Dockerfile_zones -t taxi_zones_ingest .
+
+zones_URL="https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv"
 
 docker run -it \
   --network=week_1_default \

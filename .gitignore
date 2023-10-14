@@ -4,7 +4,7 @@ pgadmin_conn_data/
 *.csv
 .DS_Store
 .vscode
-
+.env
 
 
 
@@ -48,3 +48,5 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+
