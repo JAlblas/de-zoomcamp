@@ -9,7 +9,8 @@ from sqlalchemy import create_engine
 def ingest_callable(user, password, host, port, db, table_name, csv_file, execution_date):
     print(table_name, csv_file, execution_date)
 
-    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
+    engine = create_engine(
+        f'postgresql://{user}:{password}@{host}:{port}/{db}')
     engine.connect()
 
     print('connection established successfully, inserting data...')
@@ -29,7 +30,7 @@ def ingest_callable(user, password, host, port, db, table_name, csv_file, execut
     t_end = time()
     print('inserted the first chunk, took %.3f second' % (t_end - t_start))
 
-    while True: 
+    while True:
         t_start = time()
 
         try:
