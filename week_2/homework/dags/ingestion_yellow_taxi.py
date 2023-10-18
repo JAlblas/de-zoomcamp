@@ -11,8 +11,8 @@ from upload_gcs import upload_to_gcs
 
 
 AIRFLOW_HOME = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
-BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", 'trips_data_all')
-PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
+# BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", 'trips_data_all')
+# PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 BUCKET = os.environ.get("GCP_GCS_BUCKET")
 
 URL_PREFIX = "https://d37ci6vzurychx.cloudfront.net/trip-data"
