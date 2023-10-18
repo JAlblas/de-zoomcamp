@@ -30,9 +30,10 @@ default_args = {
 
 # NOTE: DAG declaration - using a Context Manager (an implicit way)
 with DAG(
-    dag_id="ingestion_yellow_taxi_v03",
+    dag_id="ingestion_yellow_taxi_v04",
     schedule_interval="0 6 2 * *",
-    start_date=datetime(2021, 1, 1),
+    start_date=datetime(2019, 1, 1),
+    end_date=datetime(2021, 1, 1),
     default_args=default_args,
     catchup=True,
     max_active_runs=3,
@@ -45,7 +46,7 @@ with DAG(
     )
 
     local_to_gcs_task = PythonOperator(
-        task_id="local_to_gcs_task",
+        task_id="yellow_taxi_to_gcs",
         python_callable=upload_to_gcs,
         op_kwargs={
             "bucket": BUCKET,
