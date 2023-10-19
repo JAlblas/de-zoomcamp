@@ -1,9 +1,7 @@
 import os
-import logging
 from datetime import datetime
 
 from airflow import DAG
-from airflow.utils.dates import days_ago
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 
@@ -45,7 +43,7 @@ with DAG(
         bash_command=f'curl -sSLf {DL_URL} > {OUTPUT_FILE_TEMPLATE}'
     )
 
-    local_to_gcs_task = PythonOperator(
+    local_to_gcs = PythonOperator(
         task_id="yellow_taxi_to_gcs",
         python_callable=upload_to_gcs,
         op_kwargs={
@@ -55,4 +53,4 @@ with DAG(
         },
     )
 
-    fetch_data >> local_to_gcs_task
+    fetch_data >> local_to_gcs

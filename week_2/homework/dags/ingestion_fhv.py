@@ -43,7 +43,7 @@ with DAG(
         bash_command=f'curl -sSLf {DL_URL} > {OUTPUT_FILE_TEMPLATE}'
     )
 
-    local_to_gcs_task = PythonOperator(
+    local_to_gcs = PythonOperator(
         task_id="fhv_to_gcs",
         python_callable=upload_to_gcs,
         op_kwargs={
@@ -53,4 +53,4 @@ with DAG(
         },
     )
 
-    fetch_data >> local_to_gcs_task
+    fetch_data >> local_to_gcs
