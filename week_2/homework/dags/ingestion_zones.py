@@ -37,6 +37,7 @@ default_args = {
 with DAG(
     dag_id="ingestion_zones",
     start_date=days_ago(1),
+    schedule_interval='@once',
     default_args=default_args,
     catchup=False,
     max_active_runs=1,
