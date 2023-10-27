@@ -1,4 +1,4 @@
-Welcome to your new dbt project!
+Starter project used as part of week 4 of the data engineering zoomcamp
 
 ### Using the starter project
 
