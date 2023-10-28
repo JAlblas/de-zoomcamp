@@ -3,9 +3,3 @@
 target/
 dbt_packages/
 logs/
-<<<<<<< HEAD
-=======
-
-# legacy -- renamed to dbt_packages in v1
-dbt_modules/
->>>>>>> bf6b20b1afabab5c5899f8eb0c3414034043a095
